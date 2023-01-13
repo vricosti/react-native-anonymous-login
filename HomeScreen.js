@@ -14,7 +14,8 @@ export default class HomeScreen extends Component {
             buttonText: 'I want to link credentials',
             email: '',
             password: '',
-            type: this.props.navigation.getParam('type', 'anonymous')
+            type: this.props.route.params.type || 'anonymous'
+            //type: this.props.navigation.getParam('type', 'anonymous')
         };
     }
 
@@ -57,6 +58,7 @@ export default class HomeScreen extends Component {
     }
 
     render() {
+        //console.log("HomeScreen.render()");
         return (
             <View style={styles.fullHeight}>
                 <Text style={styles.para}>Welcome User,</Text>

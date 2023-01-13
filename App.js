@@ -5,33 +5,44 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
 
-const MainNavigator = createStackNavigator({
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: ({ navigation }) => ({
-      headerShown: false
-    }),
-  },
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: ({ navigation }) => ({
-      headerTitle: 'Anonymous Login',
-      headerTitleAlign: 'center',
-      headerBackTitleVisible: false,
-      headerStyle:{'backgroundColor': '#444444'},
-      headerTintColor: '#ffffff',
-      headerLeft: null
-    }),
-  },
-}, {
-  headerMode: 'screen'
-});
+const Stack = createNativeStackNavigator();
 
-const App = createAppContainer(MainNavigator);
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerMode: 'screen',
+      }}
+      >
+        <Stack.Screen 
+          options={{ 
+            headerShown: false 
+          }}
+          name="Login" 
+          component={LoginScreen}
+        />
+        <Stack.Screen 
+          options={{ 
+            headerTitle: 'Anonymous Login',
+            headerTitleAlign: 'center',
+            headerBackTitleVisible: false,
+            headerStyle: {
+              backgroundColor: '#444444',
+            },
+            headerTintColor: '#ffffff',
+            headerLeft: null 
+          }}
+        name="Home" 
+        component={HomeScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;
