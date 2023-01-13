@@ -1,6 +1,4 @@
 package com.rnanonymouslogin;
-import expo.modules.ReactActivityDelegateWrapper;
-import com.facebook.react.ReactActivityDelegate;
 
 import com.facebook.react.ReactActivity;
 
@@ -13,12 +11,5 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "RNanonymousLogin";
-  }
-
-  @Override
-  protected ReactActivityDelegate createReactActivityDelegate() {
-    return new ReactActivityDelegateWrapper(this, BuildConfig.IS_NEW_ARCHITECTURE_ENABLED,
-      new ReactActivityDelegate(this, getMainComponentName())
-    );
   }
 }
